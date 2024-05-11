@@ -8,7 +8,7 @@
         "plugin:@typescript-eslint/stylistic",
         "prettier",
     ],
-    "ignorePatterns": ["*.cjs", "*.js", "archive/", "dist/", "node_modules/", "public/"],
+    "ignorePatterns": ["*.cjs", "*.mjs", "*.js", "archive/", "dist/", "node_modules/", "public/"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "project": true,

@@ -1,6 +1,5 @@
 {
-    "name": "tag-creator",
-    "private": true,
+    "name": "playground",
     "type": "module",
     "version": "0.0.1",
     "scripts": {
@@ -30,6 +29,5 @@
         "prettier-plugin-astro": "^0.13.0",
         "prettier-plugin-sort-json": "^4.0.0",
         "prettier-plugin-tailwindcss": "^0.5.14"
-    },
-    "packageManager": "pnpm@9.0.6+sha1.648f6014eb363abb36618f2ba59282a9eeb3e879"
+    }
 }
