@@ -8,5 +8,5 @@ export default defineConfig({
     server: {
         port: 3000,
     },
-    site: "https://cyrus01337.github.io",
+    site: "https://cyrus01337.co.uk",
 });
