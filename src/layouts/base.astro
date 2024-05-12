@@ -1,5 +1,14 @@
-<!DOCTYPE html>
+---
+import "@fontsource-variable/inter-tight";
 
+interface Props {
+    class?: string;
+}
+
+const { class: className = null } = Astro.props;
+---
+
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
@@ -12,6 +21,8 @@
     </head>
 
     <body>
-        <slot />
+        <div class={className}>
+            <slot />
+        </div>
     </body>
-    </html>
+</html>
