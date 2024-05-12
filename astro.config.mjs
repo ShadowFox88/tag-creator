@@ -3,7 +3,7 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-    base: "tag-creator"
+    base: "tag-creator",
     integrations: [tailwind()],
     server: {
         port: 3000,
