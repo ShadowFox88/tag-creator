@@ -1,4 +1,10 @@
 {
+    "name": "Next App Boilerplate",
+    "dockerFile": "Dockerfile",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+    "workspaceFolder": "/workspace",
+    "postCreateUser": "node",
+    "postCreateCommand": "bun install && (bun pm trust --all || true) && bun prepare",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -21,16 +27,10 @@
             ]
         }
     },
-    "dockerFile": "Dockerfile",
     "features": {
         "ghcr.io/devcontainers-contrib/features/caddy": {},
         "ghcr.io/devcontainers/features/docker-in-docker": {},
         "ghcr.io/devcontainers/features/git": {},
         "ghcr.io/devcontainers/features/github-cli": {}
-    },
-    "name": "Next App Boilerplate",
-    "postCreateCommand": "bun install && (bun pm trust --all || true) && bun prepare",
-    "postCreateUser": "node",
-    "workspaceFolder": "/workspace",
-    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+    }
 }
