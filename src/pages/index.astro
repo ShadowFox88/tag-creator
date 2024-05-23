@@ -103,14 +103,16 @@ import Layout from "@/layouts/base.astro";
         <h1 class="mb-3 text-3xl font-bold">Tag Creator</h1>
 
         <form class="flex max-w-xs flex-col gap-2" id="tag-creator">
-            <Input id="name" placeholder="Name" type="text" required />
-            <Input id="command" placeholder="Command" type="text" required />
+            <Input id="name" placeholder="Name" maxlength="20" type="text" required />
+            <Input id="command" placeholder="Command" maxlength="20" type="text" required />
             <textarea
                 class="textarea textarea-bordered resize-none text-base"
                 rows="3"
                 id="content"
+                maxlength="1024"
                 placeholder="Content"></textarea>
             <Input id="media" placeholder="Media URL" type="url" />
+
             <button class="btn btn-error" id="generate" type="submit">Generate & Copy</button>
         </form>
     </div>
