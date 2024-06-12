@@ -7,6 +7,8 @@ import Layout from "@/layouts/base.astro";
     const VALID_CLASS = "btn-success";
     const INVALID_CLASS = "btn-error";
     const DEFAULT_GENERATE_BUTTON_TEXT = "Generate & Copy";
+    const CODE_BLOCK_PATTERN = /```(?<language>[a-z]{2,})?\s*(?<content>(?:.+\s*(?!```))+)\s*```/g;
+    const BACKTICKS = "```";
     const tagCreatorElement = document.getElementById("tag-creator") as HTMLFormElement;
     const nameElement = document.getElementById("name") as HTMLInputElement;
     const commandElement = document.getElementById("command") as HTMLInputElement;
@@ -23,19 +25,33 @@ import Layout from "@/layouts/base.astro";
         mediaURL: string;
     }
 
+    const processCodeblocks = (content: string) => {
+        let parsed = content;
+
+        for (const [match] of content.matchAll(CODE_BLOCK_PATTERN)) {
+            parsed = parsed.replace(match, `${BACKTICKS}\n${match}`);
+        }
+
+        return parsed;
+    };
+
     const generateOutput = (properties: GenerateOutputProperties) => {
+        const processedContent = processCodeblocks(properties.content);
         const DETAILS = {
             Name: properties.name,
             Command: properties.command,
-            Content: properties.content,
+            Content: processedContent,
             Media: properties.mediaURL,
         };
         const preProcessed = Object.entries(DETAILS)
             .filter(([, value]) => value)
             .map(([detail, value]) => `Tag ${detail}: ${value}`)
             .join("\n");
+        const appendage = preProcessed.endsWith(BACKTICKS) ? "" : BACKTICKS;
 
-        return preProcessed ? "```\n" + `${preProcessed}\n` + "```" : preProcessed;
+        return preProcessed
+            ? `${BACKTICKS}\n${preProcessed}\n${appendage}`.trimEnd()
+            : preProcessed;
     };
 
     const sleep = (milliseconds: number) =>
